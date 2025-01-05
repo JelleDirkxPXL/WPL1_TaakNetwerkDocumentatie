@@ -1,0 +1,25 @@
+Hostname Switch1
+>
+Line console 0
+ Password PXL
+ Login
+>
+Enable secret Cisco
+>
+Service password-encryption
+>
+Ip domain-name cisco.com
+Crypto key generate rsa general-keys modulus 1024
+username Admin password pxl 
+line vty 0 4 
+  transport input ssh
+  login local
+  end
+>
+Interface vlan 1
+  Ip address 192.168.1.2 255.255.255.192
+  No shutdown
+  Ip default-gateway 192.168.1.1
+>
+
+
