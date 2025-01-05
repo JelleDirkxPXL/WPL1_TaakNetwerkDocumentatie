@@ -1,0 +1,31 @@
+Hostname Router1
+>
+Line console 0
+ Password PXL
+ Login
+>
+Enable secret Cisco
+>
+Service password-encryption
+>
+Ip domain-name PXL.be
+Crypto key generate rsa general-keys modulus 1024
+username Admin password pxl 
+line vty 0 4 
+  transport input ssh
+  login local
+  end
+>
+ipv6 unicast-routing
+>
+Interface G0/0 
+  Ip address 192.168.1.1 255.255.255.192
+  Ipv6 address 2001:db8:1:1::1/64
+  Ipv6 address fe80::1 link-local
+  No shutdown
+>
+Interface G0/1 
+  Ip address 192.168.1.65 255.255.255.192
+  Ipv6 address 2001:db8:1:2::1
+  Ipv6 address fe80::1 link-local
+  No shutdown
